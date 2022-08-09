@@ -1,14 +1,16 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import GreetingReducer from './GreetingReducer';
+import logger from 'redux-logger';
+import messageReducer, { fetchmessage } from './Messages/Messages';
 
 const reducer = combineReducers({
-  GreetingReducer,
+  messageReducer,
 });
-
 const store = createStore(
   reducer,
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, logger),
 );
 
+store.dispatch(fetchmessage());
 export default store;

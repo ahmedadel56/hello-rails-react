@@ -2,7 +2,7 @@ class StaticController < ApplicationController
   def index; end
 
   def greetings
-    @greetings = Greeting.order(Arel.sql('RANDOM()')).limit(5)
-    render json: @greetings
+    greeting = Greeting.order(Arel.sql('RANDOM()')).first
+    render json: { message: greeting.text }
   end
 end

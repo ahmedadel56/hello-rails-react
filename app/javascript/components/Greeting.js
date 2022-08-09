@@ -1,30 +1,14 @@
-import React, { useEffect }  from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchGreetings } from '../redux/GreetingReducer';
+import React from "react";
+import { useSelector} from 'react-redux';
 import PropTypes from "prop-types"
 export default function Greeting () {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchGreetings());
-  }, []);
-  const greetingsState = useSelector((state) => state.GreetingReducer.greetings);
 
+  const message = useSelector((state) => state.messageReducer.message);
   return (
     <React.Fragment>
         <div>
-          this is Greeting Component
-          <div className="row" >
-          {greetingsState.map((greeting) => {
-            if (greeting.length !== 0) {
-              return (
-                <div  key={greeting.id}>
-                  {greeting.text}
-            </div>
-              );
-            }
-            return null;
-          })}
-          </div>
+          this is Greeting Component <br />
+              {message}
         </div>
       </React.Fragment>
     );
