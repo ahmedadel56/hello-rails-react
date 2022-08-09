@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "static#index"
+  get 'greetings', to: 'static#greetings'
 end
